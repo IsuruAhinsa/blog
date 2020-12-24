@@ -51,7 +51,7 @@
                             {{ Auth::user()->name }}
                         </button>
 
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
 
                             <li>
 
