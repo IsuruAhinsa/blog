@@ -10,19 +10,39 @@
                 @csrf
 
                 <div class="mb-3">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                    <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
                     <input
-                        id="name"
+                        id="first_name"
                         type="text"
-                        class="form-control @error('name') is-invalid @enderror"
-                        name="name"
-                        placeholder="Enter Name"
-                        value="{{ old('name') }}"
+                        class="form-control @error('first_name') is-invalid @enderror"
+                        name="first_name"
+                        placeholder="Enter First Name"
+                        value="{{ old('first_name') }}"
                         required
-                        autocomplete="name"
+                        autocomplete="first_name"
                         autofocus
                     >
-                    @error('name')
+                    @error('first_name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
+                    <input
+                        id="last_name"
+                        type="text"
+                        class="form-control @error('last_name') is-invalid @enderror"
+                        name="last_name"
+                        placeholder="Enter Last Name"
+                        value="{{ old('last_name') }}"
+                        required
+                        autocomplete="last_name"
+                        autofocus
+                    >
+                    @error('last_name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
