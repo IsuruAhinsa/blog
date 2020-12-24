@@ -77,6 +77,16 @@
                     </div>
 
                     <div class="col-md-12">
+                        <label for="image" class="form-label">Image</label>
+                        <input
+                            class="form-control form-control-sm"
+                            id="image"
+                            type="file"
+                            name="image"
+                        >
+                    </div>
+
+                    <div class="col-md-12">
                         <label for="bio" class="form-label">Bio</label>
                         <textarea
                             name="bio"

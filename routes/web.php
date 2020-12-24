@@ -20,6 +20,11 @@ Route::get('/', function () {
 Route::view('profile', 'settings.profile');
 Route::view('posts/show', 'posts.show');
 Route::view('posts', 'posts.index');
+Route::view('posts/create', 'posts.create');
+Route::view('posts/edit', 'posts.edit');
+Route::view('categories', 'categories.index');
+Route::view('categories/create', 'categories.create');
+Route::view('categories/edit', 'categories.edit');
 
 Auth::routes();
 

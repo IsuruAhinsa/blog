@@ -19,12 +19,6 @@
 
 <ul class="nav nav-pills py-4">
     <li class="nav-item">
-        <a class="nav-link fw-bold" aria-current="page" href="#">
-            <i class="far fa-tachometer me-2"></i>
-            Dashboard
-        </a>
-    </li>
-    <li class="nav-item">
         <a class="nav-link fw-bold active" href="#">
             <i class="far fa-user-circle me-2"></i>
             Profile
