@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('profile', 'settings.profile');
+Route::get('profile', 'UserController@showProfile')->name('profile.show')->middleware('auth');
+
 Route::view('posts/show', 'posts.show');
 Route::view('posts', 'posts.index');
 Route::view('posts/create', 'posts.create');
