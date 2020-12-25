@@ -48,6 +48,7 @@
                     <div class="dropdown">
 
                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" v-pre>
+                            <i class="far fa-user me-1"></i>
                             {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
                         </button>
 
@@ -55,9 +56,15 @@
 
                             <li>
 
+                                <a href="{{ route('profile.show') }}" class="dropdown-item">
+                                    <i class="far fa-user-circle me-1"></i>
+                                    {{ __('Profile') }}
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+                                    <i class="far fa-sign-out-alt me-1"></i>
                                     {{ __('Logout') }}
                                 </a>
 
@@ -66,10 +73,6 @@
                                 </form>
 
                             </li>
-
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
 
                         </ul>
 
