@@ -49,7 +49,7 @@
 
                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" v-pre>
                             <i class="far fa-user me-1"></i>
-                            {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
+                            {{ Auth::user()->full_name }}
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">

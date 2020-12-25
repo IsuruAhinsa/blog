@@ -20,7 +20,9 @@
                 <div>
                     <img src="{{ asset('img/about.jpg') }}" class="img-fluid rounded-circle img-thumbnail" width="175" alt="">
 
-                    <h3 class="display-6" style="color: #7952b3">Isuru Ahinsa</h3>
+                    <h3 class="display-6" style="color: #7952b3">
+                        {{ Auth::user()->full_name }}
+                    </h3>
                     <p>
                         <i class="far fa-envelope me-2"></i>
                         isurujayawickramat@gmail.com
