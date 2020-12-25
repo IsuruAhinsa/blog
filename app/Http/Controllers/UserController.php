@@ -13,4 +13,9 @@ class UserController extends Controller
     {
         return view('settings.profile');
     }
+
+    public function updateProfile(Request $request)
+    {
+        dd($request->all());
+    }
 }

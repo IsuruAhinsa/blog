@@ -17,7 +17,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('profile', 'UserController@showProfile')->name('profile.show')->middleware('auth');
+Route::middleware('auth')->group(function () {
+
+    Route::get('profile', 'UserController@showProfile')->name('profile.show');
+    Route::post('profile', 'UserController@updateProfile')->name('profile.update');
+
+});
+
 
 Route::view('posts/show', 'posts.show');
 Route::view('posts', 'posts.index');

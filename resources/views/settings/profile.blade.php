@@ -25,7 +25,7 @@
                     </h3>
                     <p>
                         <i class="far fa-envelope me-2"></i>
-                        isurujayawickramat@gmail.com
+                        {{ Auth::user()->email }}
                     </p>
 
                     <small class="text-secondary">
@@ -44,7 +44,7 @@
 
                 <hr>
 
-                <form class="row g-3" method="POST" action="#">
+                <form class="row g-3" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
 
                     @csrf
 
@@ -54,7 +54,9 @@
                             type="text"
                             class="form-control"
                             id="first_name"
+                            name="first_name"
                             placeholder="Enter First Name"
+                            value="{{ Auth::user()->first_name }}"
                         >
                     </div>
 
@@ -64,7 +66,9 @@
                             type="text"
                             class="form-control"
                             id="last_name"
+                            name="last_name"
                             placeholder="Enter Last Name"
+                            value="{{ Auth::user()->last_name }}"
                         >
                     </div>
 
@@ -74,7 +78,9 @@
                             type="email"
                             class="form-control"
                             id="email"
+                            name="email"
                             placeholder="Enter Email Address"
+                            value="{{ Auth::user()->email }}"
                         >
                     </div>
 
