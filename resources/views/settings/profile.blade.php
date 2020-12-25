@@ -52,46 +52,70 @@
                         <label for="first_name" class="form-label">First Name</label>
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('first_name') is-invalid @enderror"
                             id="first_name"
                             name="first_name"
                             placeholder="Enter First Name"
                             value="{{ Auth::user()->first_name }}"
                         >
+                        @error('first_name')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-6">
                         <label for="last_name" class="form-label">Last Name</label>
                         <input
                             type="text"
-                            class="form-control"
+                            class="form-control @error('last_name') is-invalid @enderror"
                             id="last_name"
                             name="last_name"
                             placeholder="Enter Last Name"
                             value="{{ Auth::user()->last_name }}"
                         >
+                        @error('last_name')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-12">
                         <label for="email" class="form-label">Email Address</label>
                         <input
                             type="email"
-                            class="form-control"
+                            class="form-control @error('email') is-invalid @enderror"
                             id="email"
                             name="email"
                             placeholder="Enter Email Address"
                             value="{{ Auth::user()->email }}"
                         >
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-12">
                         <label for="image" class="form-label">Image</label>
                         <input
-                            class="form-control form-control-sm"
+                            class="form-control form-control-sm @error('image') is-invalid @enderror"
                             id="image"
                             type="file"
                             name="image"
                         >
+                        @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-12">
@@ -99,11 +123,17 @@
                         <textarea
                             name="bio"
                             id="bio"
-                            class="form-control"
+                            class="form-control @error('bio') is-invalid @enderror"
                             cols="10"
                             rows="5"
                             placeholder="Type Something about you..."
                         ></textarea>
+                        @error('bio')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-12 d-inline-flex justify-content-end gap-2">
@@ -129,7 +159,7 @@
                         <label for="current_password" class="form-label">Current Password</label>
                         <input
                             type="password"
-                            class="form-control"
+                            class="form-control @error('') is-invalid @enderror"
                             id="current_password"
                             placeholder="Enter Current Password"
                         >
@@ -139,7 +169,7 @@
                         <label for="password" class="form-label">New Password</label>
                         <input
                             type="password"
-                            class="form-control"
+                            class="form-control @error('') is-invalid @enderror"
                             id="password"
                             placeholder="Enter New Password"
                         >
@@ -149,7 +179,7 @@
                         <label for="password_confirmation" class="form-label">Confirm Password</label>
                         <input
                             type="password"
-                            class="form-control"
+                            class="form-control @error('') is-invalid @enderror"
                             id="password_confirmation"
                             placeholder="Re-Enter New Password"
                         >
