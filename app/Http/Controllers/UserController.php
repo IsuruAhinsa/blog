@@ -31,14 +31,13 @@ class UserController extends Controller
                 $filename = date('Y_m_d_h_i_s') . "." . $extension;
                 Storage::disk('public')->put('img/users/'.$filename, file_get_contents($image));
             }
-        }
-
-        // remove current image if exists
-        if (Storage::disk('public')->exists('img/users/'.Auth::user()->image)) {
-            try {
-                Storage::disk('public')->delete('img/users/'.Auth::user()->image);
-            } catch (\Exception $exception) {
-                return null;
+            // remove current image if exists
+            if (Storage::disk('public')->exists('img/users/'.Auth::user()->image)) {
+                try {
+                    Storage::disk('public')->delete('img/users/'.Auth::user()->image);
+                } catch (\Exception $exception) {
+                    return null;
+                }
             }
         }
 

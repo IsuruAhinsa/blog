@@ -44,6 +44,8 @@
 
                 <hr>
 
+                <x-Alert></x-Alert>
+
                 <form class="row g-3" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
 
                     @csrf
