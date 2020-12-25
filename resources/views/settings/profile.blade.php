@@ -127,7 +127,7 @@
                             cols="10"
                             rows="5"
                             placeholder="Type Something about you..."
-                        ></textarea>
+                        >{{ Auth::user()->bio }}</textarea>
                         @error('bio')
                             <span class="invalid-feedback" role="alert">
                                 <i class="far fa-exclamation-circle me-1"></i>
