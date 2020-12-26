@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -64,7 +65,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * Update Password
      */
-    public function updatePassword(Request $request)
+    public function updatePassword(UpdatePasswordRequest $request)
     {
         // check if the hash passwords are match
         if (Hash::check($request->current_password, Auth::user()->password)) {
@@ -77,7 +78,7 @@ class UserController extends Controller
             // return redirect to back with success message
             return back()->with('success', 'Your Password has been updated!');
         } else {
-            return back()->withErrors('Your current password is not valid. Please enter your valid password.');
+            return back()->withErrors(['current_password' => 'Your current password is not valid. Please enter your valid password.']);
         }
     }
 }

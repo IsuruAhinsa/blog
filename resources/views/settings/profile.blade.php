@@ -43,14 +43,14 @@
             </div>
             <div class="col-md-8 ps-4 pe-4">
 
+                <x-Alert></x-Alert>
+
                 <h4 class="fw-lighter">
                     <i class="far fa-id-card-alt me-2 text-secondary"></i>
                     Basic Info
                 </h4>
 
                 <hr>
-
-                <x-Alert></x-Alert>
 
                 <form class="row g-3" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
 
@@ -178,6 +178,12 @@
                             name="current_password"
                             placeholder="Enter Current Password"
                         >
+                        @error('current_password')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-4">
@@ -189,6 +195,12 @@
                             name="password"
                             placeholder="Enter New Password"
                         >
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-4">
