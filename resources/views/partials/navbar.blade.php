@@ -48,8 +48,15 @@
                     <div class="dropdown">
 
                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" v-pre>
-                            <i class="far fa-user me-1"></i>
+
+                            @if(Auth::user()->image)
+                                <img src="{{ asset('img/users/' . Auth::user()->image) }}" class="img-fluid rounded-circle me-2" width="24" alt="{{ Auth::user()->image }}">
+                            @else
+                                <i class="far fa-user me-1"></i>
+                            @endif
+
                             {{ Auth::user()->full_name }}
+
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">

@@ -149,7 +149,7 @@
                     </div>
 
                     <div class="col-12 d-inline-flex justify-content-end gap-2">
-                        <a href="#" class="btn btn-outline-primary">Cancel</a>
+                        <a href="{{ url('/') }}" class="btn btn-outline-primary">Cancel</a>
                         <button type="submit" class="btn btn-primary">
                             <i class="far fa-save me-2"></i>
                             Save
@@ -165,14 +165,17 @@
 
                 <hr>
 
-                <form action="#" method="POST" class="row g-3">
+                <form action="{{ route('update.password') }}" method="POST" class="row g-3">
+
+                    @csrf
 
                     <div class="col-md-4">
                         <label for="current_password" class="form-label">Current Password</label>
                         <input
                             type="password"
-                            class="form-control @error('') is-invalid @enderror"
+                            class="form-control @error('current_password') is-invalid @enderror"
                             id="current_password"
+                            name="current_password"
                             placeholder="Enter Current Password"
                         >
                     </div>
@@ -181,8 +184,9 @@
                         <label for="password" class="form-label">New Password</label>
                         <input
                             type="password"
-                            class="form-control @error('') is-invalid @enderror"
+                            class="form-control @error('password') is-invalid @enderror"
                             id="password"
+                            name="password"
                             placeholder="Enter New Password"
                         >
                     </div>
@@ -191,14 +195,15 @@
                         <label for="password_confirmation" class="form-label">Confirm Password</label>
                         <input
                             type="password"
-                            class="form-control @error('') is-invalid @enderror"
+                            class="form-control"
                             id="password_confirmation"
+                            name="password_confirmation"
                             placeholder="Re-Enter New Password"
                         >
                     </div>
 
                     <div class="col-12 d-inline-flex justify-content-end gap-2">
-                        <a href="#" class="btn btn-outline-primary">Cancel</a>
+                        <a href="{{ url('/') }}" class="btn btn-outline-primary">Cancel</a>
                         <button type="submit" class="btn btn-primary">
                             Change Password
                         </button>
