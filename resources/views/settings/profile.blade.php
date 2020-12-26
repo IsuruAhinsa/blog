@@ -18,7 +18,13 @@
             <div class="col-md-4 border-end border-3 text-center d-flex align-items-center">
 
                 <div>
-                    <img src="{{ asset('img/about.jpg') }}" class="img-fluid rounded-circle img-thumbnail" width="175" alt="">
+
+                    @if(Auth::user()->image)
+                        <img src="{{ asset('img/users/' . Auth::user()->image) }}" class="img-fluid rounded-circle img-thumbnail" width="175" alt="{{ Auth::user()->image }}">
+                    @else
+                        <img src="{{ asset('img/users/default.png') }}" class="img-fluid rounded-circle img-thumbnail" width="175" alt="user default image">
+                    @endif
+
 
                     <h3 class="display-6" style="color: #7952b3">
                         {{ Auth::user()->full_name }}
@@ -29,7 +35,7 @@
                     </p>
 
                     <small class="text-secondary">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque, ducimus esse in nisi non nulla, obcaecati quisquam, recusandae repellendus sapiente veritatis voluptatem voluptatibus. Aliquid blanditiis esse fugit iure sit?
+                        {!! Auth::user()->bio !!}
                     </small>
 
                 </div>
