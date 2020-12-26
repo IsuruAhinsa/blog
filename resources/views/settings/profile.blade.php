@@ -117,6 +117,7 @@
                             id="image"
                             type="file"
                             name="image"
+                            aria-describedby="imageHelp"
                         >
                         @error('image')
                             <span class="invalid-feedback" role="alert">
@@ -124,6 +125,9 @@
                                 {{ $message }}
                             </span>
                         @enderror
+                        <div id="imageHelp" class="form-text">
+                            User image dimensions must be 1:1 & allowed file types are JPEG,JPG,GIF,PNG only.
+                        </div>
                     </div>
 
                     <div class="col-md-12">
