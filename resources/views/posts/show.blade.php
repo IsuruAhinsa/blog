@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Lorem ipsum dolor sit amet, consectetur adipisicing. -')
+
 @section('content')
 
     <div class="container">
