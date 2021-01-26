@@ -25,7 +25,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link fw-bold" href="#">
+        <a class="nav-link fw-bold" href="{{ route('categories.index') }}">
             <i class="far fa-sitemap me-2"></i>
             Categories
         </a>

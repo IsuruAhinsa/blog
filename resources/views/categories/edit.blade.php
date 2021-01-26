@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Category -')
+@section('title', 'Edit ' . $category->name . ' Category -')
 
 @section('content')
 
@@ -13,10 +13,10 @@
                             <a class="text-decoration-none" style="color:#7952b3;" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <a class="text-decoration-none" style="color:#7952b3;" href="#">Categories</a>
+                            <a class="text-decoration-none" style="color:#7952b3;" href="{{ route('categories.index') }}">Categories</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Edit Category
+                            Edit {{ $category->name }} Category
                         </li>
                     </ol>
                 </nav>
@@ -25,9 +25,10 @@
                     Edit Category
                 </h3>
 
-                <form action="#" class="py-5">
+                <form action="{{ route('categories.update', $category->id) }}" method="POST" class="py-5">
 
                     @csrf
+                    @method('PUT')
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Category Name</label>
@@ -35,9 +36,16 @@
                             type="text"
                             name="name"
                             id="name"
-                            class="form-control"
+                            class="form-control @error('name') is-invalid @enderror"
                             placeholder="Enter Category Name"
+                            value="{{ $category->name }}"
                         >
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <button class="btn btn-outline-primary float-end" type="submit">Update Category</button>

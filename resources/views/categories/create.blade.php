@@ -13,7 +13,7 @@
                             <a class="text-decoration-none" style="color:#7952b3;" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <a class="text-decoration-none" style="color:#7952b3;" href="#">Categories</a>
+                            <a class="text-decoration-none" style="color:#7952b3;" href="{{ route('categories.index') }}">Categories</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             Create Category
@@ -25,7 +25,9 @@
                     Create Category
                 </h3>
 
-                <form action="#" class="py-5">
+                <x-alert></x-alert>
+
+                <form action="{{ route('categories.store') }}" method="POST" class="py-5">
 
                     @csrf
 
@@ -35,9 +37,15 @@
                             type="text"
                             name="name"
                             id="name"
-                            class="form-control"
+                            class="form-control @error('name') is-invalid @enderror"
                             placeholder="Enter Category Name"
                         >
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <i class="far fa-exclamation-circle me-1"></i>
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
 
                     <button class="btn btn-outline-primary float-end" type="submit">Create Category</button>

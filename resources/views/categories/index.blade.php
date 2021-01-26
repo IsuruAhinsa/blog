@@ -13,7 +13,7 @@
                             <a class="text-decoration-none" style="color:#7952b3;" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            Categories
+                            {{ request()->status == 'deleted' ? 'Deleted Categories' : 'Categories' }}
                         </li>
                     </ol>
                 </nav>
@@ -21,18 +21,32 @@
                 <div class="d-flex justify-content-between align-items-baseline">
                     <h3 class="display-5 mb-3">
                         <i class="far fa-sitemap me-1"></i>
-                        Categories
+                        {{ request()->status == 'deleted' ? 'Deleted Categories' : 'Categories' }}
                     </h3>
 
                     <div>
-                        <a href="#" class="btn btn-sm btn-outline-primary">
-                            <i class="far fa-recycle me-2"></i>
-                            Show Deleted Categories
+                        @if(request()->status == 'deleted')
+                            <a href="{{ route('categories.index') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="far fa-sitemap me-2"></i>
+                                Show Current Categories
+                            </a>
+                        @else
+                            <a href="{{ route('categories.index', ['status' => 'deleted']) }}" class="btn btn-sm btn-outline-primary">
+                                <i class="far fa-recycle me-2"></i>
+                                Show Deleted Categories
+                            </a>
+                        @endif
+                        <a href="{{ route('categories.create') }}" class="btn btn-sm btn-outline-primary">
+                            <i class="far fa-plus me-2"></i>
+                            Create Category
                         </a>
                     </div>
                 </div>
 
                 <div class="py-5">
+
+                    <x-alert></x-alert>
+
                     <table class="table table-hover table-sm">
                         <thead>
                         <tr>
@@ -42,20 +56,48 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Health</td>
-                            <td>2020-12-11</td>
-                            <td class="text-center">
-                                <a href="#" class="btn btn-sm btn-success">
-                                    <i class="far fa-pencil-alt me-2"></i>
-                                    Edit
-                                </a>
-                                <a href="#" class="btn btn-sm btn-danger">
-                                    <i class="far fa-trash me-2"></i>
-                                    Delete
-                                </a>
-                            </td>
-                        </tr>
+                        @foreach($categories as $category)
+                            <tr>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->created_at->toDayDateTimeString() }}</td>
+                                <td class="text-center">
+                                    @if(request()->status == 'deleted')
+
+                                        <a href="{{ route('categories.restore', $category->id) }}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-undo mr-2"></i>
+                                            Restore
+                                        </a>
+
+                                        <a href="{{ route('categories.fdelete', $category->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure to delete this category permanently?')">
+                                            <i class="fas fa-trash mr-2"></i>
+                                            Permanently Delete
+                                        </a>
+
+                                    @else
+
+                                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <a href="{{ route('categories.show', $category->id) }}" class="btn btn-sm btn-primary">
+                                                <i class="far fa-eye me-2"></i>
+                                                Show
+                                            </a>
+                                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-success">
+                                                <i class="far fa-pencil-alt me-2"></i>
+                                                Edit
+                                            </a>
+
+                                            <button class="btn btn-sm btn-danger" type="submit">
+                                                <i class="far fa-trash me-2"></i>
+                                                Delete
+                                            </button>
+                                        </form>
+
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

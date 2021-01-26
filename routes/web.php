@@ -18,21 +18,13 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-
     Route::get('profile', 'UserController@showProfile')->name('profile.show');
     Route::post('profile', 'UserController@updateProfile')->name('profile.update');
     Route::post('password', 'UserController@updatePassword')->name('update.password');
-
+    Route::resource('categories', 'CategoryController');
+    Route::get('categories/restore/{id}', 'CategoryController@restore')->name('categories.restore');
+    Route::get('categories/fdelete/{id}', 'CategoryController@fdelete')->name('categories.fdelete');
 });
-
-
-Route::view('posts/show', 'posts.show');
-Route::view('posts', 'posts.index');
-Route::view('posts/create', 'posts.create');
-Route::view('posts/edit', 'posts.edit');
-Route::view('categories', 'categories.index');
-Route::view('categories/create', 'categories.create');
-Route::view('categories/edit', 'categories.edit');
 
 Auth::routes();
 
